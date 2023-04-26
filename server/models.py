@@ -10,7 +10,7 @@ from config import db
 
 class User(db.Model, SerializerMixin):
     __tablename__ ='users'
-    # serialize_rules= ()
+    serialize_rules= ("-reviews"),
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     username = db.Column(db.String, unique=True)
@@ -38,7 +38,7 @@ class User(db.Model, SerializerMixin):
 
 class Salon(db.Model, SerializerMixin):
     __tablename__ = "salons"
-    # serialize_rules = ("-",)
+    serialize_rules = ("-reviews",)
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable = False)
     location = db.Column(db.String)
