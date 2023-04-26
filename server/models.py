@@ -60,7 +60,7 @@ class Review(db.Model, SerializerMixin):
     salon_id = db.Column(db.Integer, db.ForeignKey("salons.id"))
     @validates("rating")
     def validate_rating(self, key, value):
-        if 1 <= value <= 5:
+        if 1 <= int(value) <= 5 :
             return value
         raise ValueError("rating must be between 1 and 5")
 

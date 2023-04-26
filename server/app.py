@@ -67,7 +67,7 @@ class Salons (Resource):
         return make_response(new_salon.to_dict(), 201)
 
   
-api.add_resource(Salons, "/salons", endpoint = "salon_list")
+api.add_resource(Salons, "/salons")
 
 class SalonById(Resource):
     def get (self, id):
@@ -100,7 +100,7 @@ class Reviews(Resource):
             content = data['content'],
             rating = data["rating"],
             user_id = data["user_id"],
-            salon_id = data["restaurant_id"]
+            salon_id = data["salon_id"],
             )
         except ValueError:
             return make_response({"error": "must be valid review"}, 404)
@@ -109,7 +109,7 @@ class Reviews(Resource):
         db.session.commit()
         return make_response(new_review.to_dict(), 201)
     
-api.add_resource(Reviews, "/reviews", endpoint="review_list")
+api.add_resource(Reviews, "/reviews")
 
 class ReviewById(Resource):
     def get(self, id):
