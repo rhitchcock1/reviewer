@@ -1,5 +1,5 @@
 from app import app
-from models import db, Restaurant, User, Review, Salon
+from models import db, User, Review, Salon
 
 with app.app_context():
 
