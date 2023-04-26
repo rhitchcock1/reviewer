@@ -1,4 +1,4 @@
-
+import Home from "./Home"
 import './App.css';
 
 function App() {
@@ -6,6 +6,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Reviewer</h1>
+        <Home />
       </header>
     </div>
   );

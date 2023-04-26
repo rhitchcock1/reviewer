@@ -1,10 +1,13 @@
 # Remote library imports
 from flask import request, make_response
 from flask_restful import Resource
+from flask import Flask
+# from flask_bcrypt import Bcrypt
 
 # Local imports
 # from config import app, db, api
 from config import app
+# bcrypt = Bcrypt(app)
 # from models import User, Restaurant, Review
 
 # Views go here!
