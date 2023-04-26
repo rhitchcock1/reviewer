@@ -3,8 +3,8 @@
 from sqlalchemy.orm import validates
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy_serializer import SerializerMixin
-# from sqlalchemy.ext.hybrid import hybrid_property
-# from app import bcrypt
+from sqlalchemy.ext.hybrid import hybrid_property
+from app import bcrypt
 
 from config import db
 
@@ -18,23 +18,23 @@ class User(db.Model, SerializerMixin):
     reviews= db.relationship("Review", backref="user")
     salons= association_proxy("reviews", "salon")
 
-    # def __repr__(self):
-    #     return f'User {self.username}, ID {self.id}'
+    def __repr__(self):
+        return f'User {self.username}, ID {self.id}'
 
-    # @hybrid_property
-    # def password_hash(self):
-    #     return self._password_hash
+    @hybrid_property
+    def password_hash(self):
+        return self._password_hash
 
-    # @password_hash.setter
-    # def password_hash(self, password):
-    #     # utf-8 encoding and decoding is required in python 3
-    #     password_hash = bcrypt.generate_password_hash(
-    #         password.encode('utf-8'))
-    #     self._password_hash = password_hash.decode('utf-8')
+    @password_hash.setter
+    def password_hash(self, password):
+        # utf-8 encoding and decoding is required in python 3
+        password_hash = bcrypt.generate_password_hash(
+            password.encode('utf-8'))
+        self._password_hash = password_hash.decode('utf-8')
 
-    # def authenticate(self, password):
-    #     return bcrypt.check_password_hash(
-    #         self._password_hash, password.encode('utf-8'))
+    def authenticate(self, password):
+        return bcrypt.check_password_hash(
+            self._password_hash, password.encode('utf-8'))
 
 class Salon(db.Model, SerializerMixin):
     __tablename__ = "salons"
@@ -56,8 +56,8 @@ class Review(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String, )
     rating = db.Column(db.Integer, nullable = False)
-    user_id = db.Column(db.Interger, db.ForeignKey("users.id"))
-    salon_id = db.Column(db.Interger, db.ForeignKey("salons.id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    salon_id = db.Column(db.Integer, db.ForeignKey("salons.id"))
     @validates("rating")
     def validate_rating(self, key, value):
         if 1 <= value <= 5:
