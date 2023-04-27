@@ -7,7 +7,7 @@ const linkStyles = {
   width: "100px",
   padding: "12px",
   margin: "0 6px 6px",
-  background: "#F3EE18",
+  background: "red",
   textDecoration: "none",
   color: "black",
 };
@@ -22,7 +22,7 @@ function NavBar() {
         exact
         style={linkStyles}
         activeStyle={{
-          background: "white",
+          background: "Pink",
         }}
         
       >
@@ -34,7 +34,7 @@ function NavBar() {
         exact
         style={linkStyles}
         activeStyle={{
-          background: "white",
+          background: "pink",
         }}
       >
         Reviews
@@ -45,7 +45,7 @@ function NavBar() {
         exact
         style={linkStyles}
         activeStyle={{
-          background: "white" ,
+          background: "pink" ,
         }}
       >
         Salons

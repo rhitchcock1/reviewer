@@ -13,7 +13,7 @@ function Salons(){
       }, [])
 
     const salonCards = salons.map((salon) =>{
-        return <SalonCard key={salon.id} review={salon} />
+        return <SalonCard key={salon.id} salon={salon} />
       })
 
     return(

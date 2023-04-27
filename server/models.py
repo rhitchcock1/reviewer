@@ -3,9 +3,11 @@
 from sqlalchemy.orm import validates
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy_serializer import SerializerMixin
-# from sqlalchemy.ext.hybrid import hybrid_property
-# from app import bcrypt
-
+from sqlalchemy.ext.hybrid import hybrid_property
+from flask_bcrypt import Bcrypt
+# from app import app, db
+# # from app import bcrypt
+# bcrypt = Bcrypt(app)
 from config import db
 
 class User(db.Model, SerializerMixin):
@@ -18,8 +20,8 @@ class User(db.Model, SerializerMixin):
     reviews= db.relationship("Review", backref="user")
     salons= association_proxy("reviews", "salon")
 
-    # def __repr__(self):
-    #     return f'User {self.username}, ID {self.id}'
+    def __repr__(self):
+        return f'User {self.username}, ID {self.id}'
 
     # @hybrid_property
     # def password_hash(self):
@@ -52,7 +54,7 @@ class Salon(db.Model, SerializerMixin):
 
 class Review(db.Model, SerializerMixin):
     __tablename__ = "reviews"
-    # serialize_rules = ("-",)
+    serialize_rules = ( )
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String, )
     rating = db.Column(db.Integer, nullable = False)

@@ -11,6 +11,19 @@ from models import User,Salon, Review
 # from models import User, Restaurant, Review
 
 # Views go here!
+# @app.before_request
+# def check_if_logged_in():
+#     open_access_list = [
+#         'clear',
+#         # "salon_list",
+#         # "review_list",
+#         'login',
+#         'logout',
+#         'check_session'
+#     ]
+#     if (request.endpoint) not in open_access_list and (not session.get('user_id')):
+#         return {'error': '401 Unauthorized'}, 401
+    
 @app.route('/')
 def index():
     return '<h1>Home</h1>'
@@ -67,7 +80,7 @@ class Salons (Resource):
         return make_response(new_salon.to_dict(), 201)
 
   
-api.add_resource(Salons, "/salons")
+api.add_resource(Salons, "/salons", endpoint = "salon_list")
 
 class SalonById(Resource):
     def get (self, id):
@@ -109,7 +122,7 @@ class Reviews(Resource):
         db.session.commit()
         return make_response(new_review.to_dict(), 201)
     
-api.add_resource(Reviews, "/reviews")
+api.add_resource(Reviews, "/reviews", endpoint = "review_list")
 
 class ReviewById(Resource):
     def get(self, id):
