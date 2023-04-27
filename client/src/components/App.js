@@ -2,6 +2,7 @@ import Home from "./Home"
 import Reviews from "./Reviews";
 import Salons from "./Salons";
 import NavBar from "./NavBar";
+import { useNavigate } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
 import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
@@ -9,11 +10,15 @@ import { Link } from "react-router-dom";
 
 function App() {
   const [user, setUser] = useState(null);
+  const navigate = useNavigate()
 
   useEffect(() => {
-    fetch("/check_session").then((response) => {
+    fetch("http://localhost:5555/check_session").then((response) => {
       if (response.ok) {
-        response.json().then((user) => setUser(user));
+        response.json().then((user) => setUser(user))
+      }else{
+        setUser(null)
+      
       }
     });
   }, []);
@@ -25,7 +30,8 @@ function App() {
   function handleLogout() {
     fetch("http://localhost:5555/logout", {
     method: "DELETE",
-    }).then(() => setUser());
+    }).then(() => setUser(null));
+    navigate("/")
 
   }
 
@@ -40,7 +46,8 @@ function App() {
           <button onClick={handleLogout}>Logout</button>
         </div>
       ) : (
-        <Link to="/login">Click Here to Login</Link>
+        <h4>p</h4>
+        // <Link to="/">Click Here to Login</Link>
       )}
       </header>
       <NavBar />
