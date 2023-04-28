@@ -7,6 +7,7 @@ import Login from "./Login";
 import { useNavigate } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
 import React, {useState, useEffect} from "react";
+import { UserProvider } from "../context/user";
 
 
 
@@ -29,6 +30,7 @@ function App() {
 
   return (
     <div >
+        <UserProvider>
       <header>
         <h1>Reviewer</h1>
         {user ? (
@@ -74,6 +76,7 @@ function App() {
         </Routes>
       )}
       </main>
+      </UserProvider>
     </div>
   
   );
