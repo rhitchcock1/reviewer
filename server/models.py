@@ -12,7 +12,7 @@ from config import db, bcrypt
 
 class User(db.Model, SerializerMixin):
     __tablename__ ='users'
-    # serialize_rules= ("-reviews"),
+    serialize_rules= ("-reviews"),
     id = db.Column(db.Integer, primary_key=True)
     # name = db.Column(db.String)
     username = db.Column(db.String, unique=True)

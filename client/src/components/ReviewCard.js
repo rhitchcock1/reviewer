@@ -7,7 +7,7 @@ export default function ReviewCards({review}){
         <div>
         <h1>Rating: {review.rating}</h1>
         <p>Review: {review.content}</p>
-        <img src = {review.imaage} alt = {review.review}/>
+        <img src = {review.image} alt = {review.review}/>
         <h2>By: {review.user.username}</h2>
         <h1>Salon:{review.salon.name}</h1>
         </div>
