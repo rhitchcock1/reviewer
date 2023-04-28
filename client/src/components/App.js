@@ -2,15 +2,19 @@ import Home from "./Home"
 import Reviews from "./Reviews";
 import Salons from "./Salons";
 import NavBar from "./NavBar";
+import SignUp from "./SignUp";
+import Login from "./Login";
 import { useNavigate } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
 import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 
 
+
 function App() {
   const [user, setUser] = useState(null);
   const navigate = useNavigate()
+
 
   useEffect(() => {
     fetch("http://localhost:5555/check_session").then((response) => {
@@ -50,11 +54,13 @@ function App() {
         // <Link to="/">Click Here to Login</Link>
       )}
       </header>
-      <NavBar />
+      <NavBar user={user} setUser={setUser}/>
+      <main>
+      {user ? (
       <Routes>
 
         <Route exact path="/" >
-        <Route index element={<Home user={user} onLogin={handleLogin}/>}/>
+        <Route index element={<Home user={user} />}/>
         </Route>
        
         <Route exact path="/Reviews">
@@ -66,6 +72,21 @@ function App() {
         </Route>
       
       </Routes>
+      ) : (
+        <Routes>
+          <Route exact path="/signup">
+         <Route index element={<SignUp setUser={setUser}/>}/>
+        </Route>
+        <Route exact path="/Login">
+         <Route index element={<Login setUser={setUser}/>}/>
+        </Route>
+        <Route exact path="/" >
+        <Route index element={<Home user={user} />}/>
+        </Route>
+
+        </Routes>
+      )}
+      </main>
     </div>
   
   );
