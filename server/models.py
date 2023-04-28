@@ -12,9 +12,9 @@ from config import db, bcrypt
 
 class User(db.Model, SerializerMixin):
     __tablename__ ='users'
-    serialize_rules= ("-reviews"),
+    # serialize_rules= ("-reviews"),
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
+    # name = db.Column(db.String)
     username = db.Column(db.String, unique=True)
     _password_hash = db.Column(db.String, nullable=False)
     reviews= db.relationship("Review", backref="user")
@@ -44,6 +44,7 @@ class Salon(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable = False)
     location = db.Column(db.String)
+    image = db.Column(db.String)
     reviews= db.relationship("Review", backref="salon")
     users= association_proxy("reviews", "user")
     @validates ("name")
@@ -58,6 +59,7 @@ class Review(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String, )
     rating = db.Column(db.Integer, nullable = False)
+    image = db.Column(db.String)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     salon_id = db.Column(db.Integer, db.ForeignKey("salons.id"))
     @validates("rating")

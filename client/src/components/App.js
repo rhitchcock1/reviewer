@@ -7,7 +7,7 @@ import Login from "./Login";
 import { useNavigate } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
 import React, {useState, useEffect} from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 
 
@@ -17,19 +17,17 @@ function App() {
 
 
   useEffect(() => {
-    fetch("http://localhost:5555/check_session").then((response) => {
-      if (response.ok) {
-        response.json().then((user) => setUser(user))
-      }else{
-        setUser(null)
-      
+    // auto-login
+    fetch("/check_session").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
       }
     });
   }, []);
 
-  function handleLogin(user) {
-    setUser(user);
-  }
+  // function handleLogin(user) {
+  //   setUser(user);
+  // }
 
   function handleLogout() {
     fetch("http://localhost:5555/logout", {
@@ -47,7 +45,7 @@ function App() {
         {user ? (
         <div>
           <p>Welcome, {user.username}!</p>
-          <button onClick={handleLogout}>Logout</button>
+          {/* <button onClick={handleLogout}>Logout</button> */}
         </div>
       ) : (
         <h4>p</h4>

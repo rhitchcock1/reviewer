@@ -14,7 +14,7 @@ const linkStyles = {
 
 function NavBar({ user, setUser }) {
   function handleLogoutClick() {
-    fetch("/logout", { method: "DELETE" }).then((r) => {
+    fetch("http://localhost:5555/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
         setUser(null);
       }
@@ -29,9 +29,7 @@ function NavBar({ user, setUser }) {
         to="/"
         exact
         style={linkStyles}
-        activeStyle={{
-          background: "Pink",
-        }}
+ 
         
       >
         Home
@@ -39,14 +37,12 @@ function NavBar({ user, setUser }) {
       <div>
         {user ? (
           <div>
-          <button onClick={handleLogoutClick}>Logout</button>
+          <button  style={linkStyles} onClick={handleLogoutClick}>Logout</button>
           <NavLink
           to="/reviews"
           exact
           style={linkStyles}
-          activeStyle={{
-            background: "pink",
-          }}
+        
         >
           Reviews
         </NavLink>
@@ -55,9 +51,7 @@ function NavBar({ user, setUser }) {
           to="/salons"
           exact
           style={linkStyles}
-          activeStyle={{
-            background: "pink" ,
-          }}
+         
         >
           Salons
         </NavLink>
@@ -68,9 +62,7 @@ function NavBar({ user, setUser }) {
         to="/signup"
         exact
         style={linkStyles}
-        activeStyle={{
-          background: "pink",
-        }}
+     
       >
         SignUp
       </NavLink>
@@ -78,9 +70,7 @@ function NavBar({ user, setUser }) {
         to="/login"
         exact
         style={linkStyles}
-        activeStyle={{
-          background: "pink",
-        }}
+     
       >
         Login
       </NavLink>
