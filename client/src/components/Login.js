@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 
-function Login({ setUser }) {
+function Login({ setUser, user }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
   
@@ -21,6 +21,7 @@ function Login({ setUser }) {
     }
   
     return (
+       <>
       <div>
         <form onSubmit={handleSubmit}>
           <h1>Login</h1>
@@ -43,6 +44,10 @@ function Login({ setUser }) {
           <button type="submit">Login</button>
         </form>
       </div>
+      {/* <div>
+        <h1>{user.review}</h1>
+      </div> */}
+      </> 
     );
   }
   

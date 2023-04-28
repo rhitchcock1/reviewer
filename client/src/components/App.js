@@ -7,7 +7,7 @@ import Login from "./Login";
 import { useNavigate } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
 import React, {useState, useEffect} from "react";
-// import { Link } from "react-router-dom";
+
 
 
 
@@ -25,17 +25,6 @@ function App() {
     });
   }, []);
 
-  // function handleLogin(user) {
-  //   setUser(user);
-  // }
-
-  function handleLogout() {
-    fetch("http://localhost:5555/logout", {
-    method: "DELETE",
-    }).then(() => setUser(null));
-    navigate("/")
-
-  }
 
 
   return (
@@ -45,11 +34,11 @@ function App() {
         {user ? (
         <div>
           <p>Welcome, {user.username}!</p>
-          {/* <button onClick={handleLogout}>Logout</button> */}
+    
         </div>
       ) : (
-        <h4>p</h4>
-        // <Link to="/">Click Here to Login</Link>
+        <h4></h4>
+     
       )}
       </header>
       <NavBar user={user} setUser={setUser}/>
@@ -76,7 +65,7 @@ function App() {
          <Route index element={<SignUp setUser={setUser}/>}/>
         </Route>
         <Route exact path="/Login">
-         <Route index element={<Login setUser={setUser}/>}/>
+         <Route index element={<Login user ={user} setUser={setUser}/>}/>
         </Route>
         <Route exact path="/" >
         <Route index element={<Home user={user} />}/>

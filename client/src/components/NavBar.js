@@ -24,13 +24,12 @@ function NavBar({ user, setUser }) {
  
 
   return (
+    <header>
     <div>
       <NavLink
         to="/"
         exact
         style={linkStyles}
- 
-        
       >
         Home
       </NavLink>
@@ -74,35 +73,12 @@ function NavBar({ user, setUser }) {
       >
         Login
       </NavLink>
-            {/* <Link to="/signup">Signup</Link> */}
-            {/* <Link to="/login">Login</Link> */}
+  
           </>
         )}
       </div>
-      {/* <NavLink
-        to="/reviews"
-        exact
-        style={linkStyles}
-        activeStyle={{
-          background: "pink",
-        }}
-      >
-        Reviews
-      </NavLink>
-
-      <NavLink
-        to="/salons"
-        exact
-        style={linkStyles}
-        activeStyle={{
-          background: "pink" ,
-        }}
-      >
-        Salons
-      </NavLink> */}
-
-
     </div>
+  </header>
   );
 }
 
