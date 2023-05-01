@@ -40,6 +40,8 @@ class Users(Resource):
             new_user = User(
                 name= data["name"],
                 username=data["username"],
+                email=data["email"],
+                admin=data["admin"],
                 _password_hash=data["password_hash"],
             )
         except ValueError:
@@ -113,6 +115,7 @@ class Reviews(Resource):
             new_review = Review (
             content = data['content'],
             rating = data["rating"],
+            helpful=data["helpful"],
             user_id = data["user_id"],
             salon_id = data["salon_id"],
             )
@@ -166,10 +169,12 @@ class Signup(Resource):
         
         username = request.get_json()['username']
         password = request.get_json()['password']
+        email = request.get_json()["email"]
+        admin = request.get_json()["admin"]
 
-        if username and password:
+        if username and password and email and admin:
             
-            new_user = User(username=username)
+            new_user = User(username=username, email=email, admin=admin)
             new_user.password_hash = password
             db.session.add(new_user)
             db.session.commit()

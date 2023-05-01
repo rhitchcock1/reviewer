@@ -1,18 +1,18 @@
-import React, { useState, useEffect} from "react"
+import React, { useState, useEffect, useContext} from "react"
 import ReviewForm from "./ReviewForm"
 import ReviewCard from "./ReviewCard"
+import AdminReviewCard from "./AdminReviewCard"
+import { UserContext } from "../context/user";
 
 
 
 
 export default function Reviews(){
+
+  const { user} = useContext(UserContext);
     const [reviews, setReviews] = useState([])
 
 
-    function onDeleteReview(reviewToDelete){
-      const updatedReviews= reviews.filter((review) =>review.id !== reviewToDelete.id)
-      setReviews(updatedReviews)
-    }
     const [reviewArray, setReviewArray] = useState([])
   
     useEffect(() => {
@@ -37,6 +37,7 @@ export default function Reviews(){
         rating:"",
         user_id: "",
         salon_id: "",
+      
   
       })
       
@@ -53,6 +54,7 @@ export default function Reviews(){
           rating: formData.rating,
           user_id: formData.user_id,
           salon_id: formData.salon_id,
+         
         }
         fetch('http://localhost:5555/reviews', { // our specific link needs to be added
           method: "POST",
@@ -68,11 +70,22 @@ export default function Reviews(){
       } 
 
     const reviewCards = reviews.map((review) =>{
-        return <ReviewCard key={review.id} review={review} />
+        return <ReviewCard key={review.id} review={review} onUpdateReview={onUpdateReview}/>
       })
+    const adminCards = reviews.map((review) =>{
+      return <AdminReviewCard key={review.id} review={review} onUpdateReview={onUpdateReview} reviewArray= {reviewArray} setReviewArray={setReviewArray}/>
+    })
     
-
-    return(
+      if (user.admin === true){
+        return(
+          <>
+        <h1>AdminCard</h1>
+        {adminCards}
+        <ReviewForm formData = {formData} handleSubmit={handleSubmit} handleChange= {handleChange}/>
+        </>
+         )
+      }
+      return(
         <>
         <h1>Reviews</h1>
         {reviewCards}

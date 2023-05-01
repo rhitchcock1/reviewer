@@ -3,9 +3,8 @@ from models import db, User, Review, Salon
 
 with app.app_context():
 
-  # u1= User(name= "tim ", username = "Tim", _password_hash= "1234")
-  # u2= User(name= "kim", username = "Kim", _password_hash= "1234")
-  # u3= User(name = "jim", username = "Jim", _password_hash= "1234")
+ 
+ 
   # users = [u1, u2, u3]
 
   s1=Salon(name = "Loreal", location = "Queens", image = "https://www.globalcosmeticsnews.com/wp-content/uploads/2020/04/Loreal_Salon.jpg")
@@ -27,6 +26,6 @@ if __name__ == '__main__':
         Review.query.delete()
         print("Starting seed...")
         db.session.add_all(salons)
-        # db.session.add_all(users)
+        # db.session.add(u1)
         db.session.add_all(reviews)
         db.session.commit()
