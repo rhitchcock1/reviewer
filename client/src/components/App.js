@@ -15,25 +15,26 @@ import { UserContext} from "../context/user";
 function App() {
   const [user, setUser] = useState(null);
   // const navigate = useNavigate()
-
-  // useEffect(() => {
-  //   fetch("http://localhost:5555/users")
-  //   .then(respose => respose.json())
-  //   .then(setUser)
-
-  // }, [])
-
-    useEffect(() => {
-    // auto-login
-    fetch(`http://localhost:5555/check_session`).then((r) => {
-      if (r.ok) {
-        r.json().then((user) => setUser(user));
+ useEffect(() => {
+  fetchUser()
+ }, [])
+  const fetchUser = () => {
+    fetch(`http://localhost:5555/check_session`, {
+      mode: 'no-cors',
+      credentials: 'include',
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+      },
+   })
+    .then(res => {
+      if (res.ok) {
+        res.json().then((user) => setUser(user));
       }
     });
-  }, );
 
-
-
+  }
+  
   return (
     <div >
          <UserContext.Provider value={{ user, setUser }}>

@@ -76,7 +76,7 @@ export default function Reviews(){
       return <AdminReviewCard key={review.id} review={review} onUpdateReview={onUpdateReview} reviewArray= {reviewArray} setReviewArray={setReviewArray}/>
     })
     
-      if (user.admin === true){
+      if (user.admin === "true" ){
         return(
           <>
         <h1>AdminCard</h1>

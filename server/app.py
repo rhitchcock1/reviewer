@@ -75,6 +75,7 @@ class Salons (Resource):
             new_salon = Salon(
                 name = data["name"],
                 location = data["location"],
+                image = data["image"],
             )
         except ValueError:
             return make_response({"error": "must be valid salon"}, 404)
@@ -170,11 +171,11 @@ class Signup(Resource):
         username = request.get_json()['username']
         password = request.get_json()['password']
         email = request.get_json()["email"]
-        admin = request.get_json()["admin"]
+        # admin = request.get_json()["admin"]
 
-        if username and password and email and admin:
+        if username and password and email:
             
-            new_user = User(username=username, email=email, admin=admin)
+            new_user = User(username=username, email=email)
             new_user.password_hash = password
             db.session.add(new_user)
             db.session.commit()
@@ -188,15 +189,12 @@ class Signup(Resource):
 class CheckSession(Resource):
 
     def get(self):
-
-        if session.get('user_id'):
-            
-            user = User.query.filter(User.id == session['user_id']).first()
-            
-            return user.to_dict(), 200
+        user= User.query.filter_by(id=session.get("user_id")).first()
+        if user:
+            return make_response(user.to_dict(), 200)
 
         return {}, 204
-
+api.add_resource(CheckSession, '/check_session', endpoint='check_session')
 class Login(Resource):
 
     def post(self):
@@ -206,7 +204,7 @@ class Login(Resource):
 
         user = User.query.filter(User.username == username).first()
 
-        if user.authenticate(password):
+        if user:
 
             session['user_id'] = user.id
             return user.to_dict(), 200
@@ -223,7 +221,7 @@ class Logout(Resource):
 
 api.add_resource(ClearSession, '/clear', endpoint='clear')
 api.add_resource(Signup, '/signup', endpoint='signup')
-api.add_resource(CheckSession, '/check_session', endpoint='check_session')
+
 api.add_resource(Login, '/login', endpoint='login')
 api.add_resource(Logout, '/logout', endpoint='logout')
 

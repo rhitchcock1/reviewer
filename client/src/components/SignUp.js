@@ -4,7 +4,7 @@ function SignUp({ setUser }) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
 
-  const [admin, setAdmin] = useState("");
+  // const [admin, setAdmin] = useState("");
 
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
@@ -22,7 +22,7 @@ function SignUp({ setUser }) {
         username,
         email,
         password,
-        admin,
+  
         password_confirmation: passwordConfirmation,
       }),
     }).then((r) => {
@@ -69,14 +69,14 @@ function SignUp({ setUser }) {
           autoComplete="current-password"
         />
         <button type="submit">Sign Up</button>
-        <label htmlFor="admin">Admin</label>
+        {/* <label htmlFor="admin">Admin</label>
         <input
           type="text"
           id="admin"
           value={admin}
-          onChange={(e) => setAdmin(e.target.value)}
+          onChange={(e) => setAdmin(e.target.value)} */}
          
-        />
+        {/* /> */}
 
       </form>
     </div>
