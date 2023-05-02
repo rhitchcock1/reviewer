@@ -8,6 +8,7 @@ export default function AdminReviewCard({review, onUpdateReview, onDeleteReview 
         method: "DELETE",
       });
       onDeleteReview(review);
+      alert("Review Deleted")
     }
     
     function handleLikeClick() {

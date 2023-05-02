@@ -6,6 +6,7 @@ import { UserContext } from "../context/user";
 export default function Home() {
   const { user} = useContext(UserContext);
 
+
         if (user) {
          
           return(
@@ -16,7 +17,7 @@ export default function Home() {
             <div>
             <h2>Review:{review.content}</h2>
             <h2>Rating:{review.rating}</h2>
-            <h2>Salon:{review.salon_id}</h2>
+            <h2>Salon:{review.salon.name}</h2>
             <img src ={review.image} alt = {review.content} />
             </div>
            ))}</h1>

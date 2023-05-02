@@ -72,15 +72,7 @@ function SignUp() {
           autoComplete="current-password"
         />
         <button type="submit">Sign Up</button>
-        {/* <label htmlFor="admin">Admin</label>
-        <input
-          type="text"
-          id="admin"
-          value={admin}
-          onChange={(e) => setAdmin(e.target.value)} */}
-         
-        {/* /> */}
-
+   
       </form>
     </div>
   );

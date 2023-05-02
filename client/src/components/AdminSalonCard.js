@@ -8,12 +8,14 @@ export default function SalonCard({salon, onDeleteSalon}){
           method: "DELETE",
         });
         onDeleteSalon(salon);
+        alert("Salon Deleted")
       }
 
     return(
         <>
         <div>
         <h1>{salon.name}</h1>
+        <h2>Salon Id: {salon.id}</h2>
         <h2>{salon.location}</h2>
         <img src = {salon.image} alt={salon.name} />
         <br />

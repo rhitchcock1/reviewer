@@ -170,7 +170,6 @@ class Signup(Resource):
         username = request.get_json()['username']
         password= request.get_json()['_password_hash']
         email = request.get_json()["email"]
-        # admin = request.get_json()["admin"]
 
         if username and password and email:
             
@@ -180,6 +179,7 @@ class Signup(Resource):
             db.session.commit()
 
             session['user_id'] = new_user.id
+            session["password"] = new_user._password_hash
             
             return new_user.to_dict(), 201
 
@@ -191,9 +191,10 @@ class CheckSession(Resource):
         user= User.query.filter_by(id=session.get("user_id")).first()
         if user:
             return make_response(user.to_dict(), 200)
-
         return {}, 204
+    
 api.add_resource(CheckSession, '/check_session', endpoint='check_session')
+
 class Login(Resource):
 
     def post(self):
@@ -201,7 +202,8 @@ class Login(Resource):
         username = request.get_json()['username']
         password = request.get_json()['password']
 
-        user = User.query.filter(User.username == username).first()
+        user = User.query.filter(User.username == username ).first()
+        password = User.query.filter(User._password_hash == password ).first()
 
         if user and password:
 

@@ -5,6 +5,7 @@ import { UserContext } from "../context/user";
 function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    
     const { user, setUser} = useContext(UserContext);
     const navigate = useNavigate()
     function handleSubmit(e) {
@@ -19,9 +20,13 @@ function Login() {
       }).then((r) => {
         if (r.ok) {
           r.json().then((user) => setUser(user));
+         
+         navigate("/")
+        }else{
+          alert("Incorrect Username or Password")
         }
       });
-      navigate("/")
+      
     }
   
     return (
