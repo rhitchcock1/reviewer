@@ -8,22 +8,7 @@ from flask import Flask
 from config import app, db, api
 from models import User,Salon, Review
 
-# from models import User, Restaurant, Review
-
-# Views go here!
-# @app.before_request
-# def check_if_logged_in():
-#     open_access_list = [
-#         'clear',
-#         # "salon_list",
-#         # "review_list",
-#         'login',
-#         'logout',
-#         'check_session'
-#     ]
-#     if (request.endpoint) not in open_access_list and (not session.get('user_id')):
-#         return {'error': '401 Unauthorized'}, 401
-    
+   
 @app.route('/')
 def index():
     return {}, 200
@@ -49,8 +34,7 @@ class Users(Resource):
         db.session.commit()
         session['user_id'] = new_user.id
         return make_response(new_user.to_dict(), 201)
-
-    
+  
 api.add_resource(Users, "/users")
 
 class UserById(Resource):
@@ -59,6 +43,7 @@ class UserById(Resource):
         if user is None:
             return make_response({"error": "user not found"}, 404)
         return make_response(user.to_dict(), 200)
+    
 api.add_resource(UserById, "/users/<int:id>")
 
 class Salons (Resource):
@@ -74,6 +59,7 @@ class Salons (Resource):
             new_salon = Salon(
                 name = data["name"],
                 location = data["location"],
+                contact = data["contact"],
                 image = data["image"],
             )
         except ValueError:
@@ -82,7 +68,6 @@ class Salons (Resource):
         db.session.commit()
         return make_response(new_salon.to_dict(), 201)
 
-  
 api.add_resource(Salons, "/salons", endpoint = "salon_list")
 
 class SalonById(Resource):

@@ -46,6 +46,7 @@ class Salon(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable = False)
     location = db.Column(db.String)
+    contact = db.Column(db.String)
     image = db.Column(db.String)
     reviews= db.relationship("Review", backref="salon")
     users= association_proxy("reviews", "user")
