@@ -10,7 +10,7 @@ export default function Home() {
         if (user) {
          
           return(
-          <div>
+          <div className = "reviewCard">
            <h1>Welcome, {user.username}!</h1>
            <h1>Your Reviews</h1>
            <h1>{user.reviews?.map((review) => (
@@ -19,6 +19,7 @@ export default function Home() {
             <h2>Rating:{review.rating}</h2>
             <h2>Salon:{review.salon.name}</h2>
             <img src ={review.image} alt = {review.content} />
+            <h3>{review.created_at}</h3>
             </div>
            ))}</h1>
      
@@ -29,3 +30,4 @@ export default function Home() {
         return <h1>Please Login or Sign Up</h1>;
       
       }
+      

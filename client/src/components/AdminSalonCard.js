@@ -13,7 +13,7 @@ export default function SalonCard({salon, onDeleteSalon}){
 
     return(
         <>
-        <div>
+        <div className = "salonCard">
         <h1>{salon.name}</h1>
         <h2>Salon Id: {salon.id}</h2>
         <h2>{salon.location}</h2>

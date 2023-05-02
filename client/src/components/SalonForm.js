@@ -10,6 +10,9 @@ export default function SalonForm({handleChange, handleSubmit, formData}){
             <input value ={formData.location} name ="location" onChange={handleChange} ></input>
             <label >location </label>
 
+            <input value ={formData.contact} name ="contact" onChange={handleChange} ></input>
+            <label >contact </label>
+
             <input value ={formData.image} name = "image" onChange={handleChange} ></input>
             <label >image </label>
 

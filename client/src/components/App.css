@@ -12,7 +12,7 @@ img {
 
 form{
 
-  width: 400px; /* Set the width of the sidebar */
+  width: 500px; 
   display: inline-block;
   flex-direction: column;
   background-color: red;
@@ -23,4 +23,16 @@ form{
 button {
   background-color: red;
 
+}
+
+.salonCard {
+  border-style: solid;
+}
+
+.reviewCard{
+  border-style: solid;
+}
+
+header {
+  background-color: red;
 }

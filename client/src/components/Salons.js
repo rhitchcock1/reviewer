@@ -8,7 +8,7 @@ function Salons(){
   const { user} = useContext(UserContext);
   const [salons, setSalons] = useState([])
 
-  // const [salonsarray, setSalonsArray] = useState("")
+
   function onDeleteSalon(salonToDelete){
     const updatedSalons= salonArray.filter((salon) =>salon.id !== salonToDelete.id)
     setSalons(updatedSalons)
@@ -24,6 +24,7 @@ function Salons(){
   const [formData, SetFormData] = useState({
       name:"",
       location:"",
+      contact: "",
       image: "",
    
       })
@@ -39,10 +40,11 @@ function Salons(){
         const newSalon = {
           name: formData.name,
           location: formData.location,
+          contact: formData.contact,
           image: formData.image,
          
         }
-        fetch('http://localhost:5555/salons', { // our specific link needs to be added
+        fetch('http://localhost:5555/salons', { 
           method: "POST",
           headers: {"Content-Type": "application/json"},
           body: JSON.stringify(newSalon)

@@ -14,28 +14,24 @@ import { UserContext} from "../context/user";
 
 
 function App() {
-  const [user, setUser] = useState(null);
-  // const navigate = useNavigate()
+  const [user, setUser] = useState();
+  
  useEffect(() => {
   fetchUser()
  }, )
   const fetchUser = () => {
     fetch(`http://localhost:5555/check_session`, {
-      // mode: 'no-cors',
-      // credentials: 'include',
-      // method: 'GET',
-      // headers: {
-      //   "Content-Type": "application/json",
-      // },
+
    })
     .then(res => {
       if (res.ok) {
         // res.json().then((user) => setUser(user));
-        setUser(user)
+        setUser(user);
       }
-    });
+    } );
 
   }
+
   
   return (
     <div >
