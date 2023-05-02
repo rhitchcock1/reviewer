@@ -1,11 +1,14 @@
 
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { UserContext } from "../context/user";
 
-function Login({ setUser, user }) {
+function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const { user, setUser} = useContext(UserContext);
   
     function handleSubmit(e) {
+      
       e.preventDefault();
       fetch("http://localhost:5555/login", {
         method: "POST",
@@ -44,9 +47,7 @@ function Login({ setUser, user }) {
           <button type="submit">Login</button>
         </form>
       </div>
-      {/* <div>
-        <h1>{user.review}</h1>
-      </div> */}
+
       </> 
     );
   }

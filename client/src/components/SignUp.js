@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { UserContext } from "../context/user";
 
-function SignUp({ setUser }) {
+function SignUp() {
+  const { user, setUser} = useContext(UserContext);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
 
   // const [admin, setAdmin] = useState("");
 
-  const [password, setPassword] = useState("");
+  const [_password_hash, setPasswordhash] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
 
   function handleSubmit(e) {
@@ -21,7 +23,8 @@ function SignUp({ setUser }) {
       body: JSON.stringify({
         username,
         email,
-        password,
+        _password_hash,
+        admin : false,
   
         password_confirmation: passwordConfirmation,
       }),
@@ -56,8 +59,8 @@ function SignUp({ setUser }) {
         <input
           type="password"
           id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={_password_hash}
+          onChange={(e) => setPasswordhash(e.target.value)}
           autoComplete="current-password"
         />
         <label htmlFor="password">Password Confirmation</label>

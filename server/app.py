@@ -42,7 +42,7 @@ class Users(Resource):
                 username=data["username"],
                 email=data["email"],
                 admin=data["admin"],
-                _password_hash=data["password_hash"],
+                _password_hash=data["_password_hash"],
             )
         except ValueError:
             return make_response({"error": "must be valid user"}, 404)
@@ -169,14 +169,14 @@ class Signup(Resource):
     def post(self):
         
         username = request.get_json()['username']
-        password = request.get_json()['password']
+        password= request.get_json()['_password_hash']
         email = request.get_json()["email"]
         # admin = request.get_json()["admin"]
 
         if username and password and email:
             
             new_user = User(username=username, email=email)
-            new_user.password_hash = password
+            new_user._password_hash = password
             db.session.add(new_user)
             db.session.commit()
 

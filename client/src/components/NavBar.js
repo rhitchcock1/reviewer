@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useContext} from "react";
 import { NavLink } from "react-router-dom";
+import { UserContext } from "../context/user";
 
 
 const linkStyles = {
@@ -12,7 +13,8 @@ const linkStyles = {
   color: "black",
 };
 
-function NavBar({ user, setUser }) {
+function NavBar() {
+  const { user, setUser} = useContext(UserContext);
   
   function handleLogoutClick() {
     fetch("http://localhost:5555/logout", { method: "DELETE" }).then((r) => {

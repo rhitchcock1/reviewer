@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext} from "react"
 import SalonCard from "./SalonCard"
 import SalonForm from "./SalonForm";
+import AdminSalonCard from "./AdminSalonCard";
 import { UserContext } from "../context/user";
 
 function Salons(){
@@ -48,15 +49,27 @@ function Salons(){
         setSalons([...salons, newSalon])
 
     }
+  const [salonArray, setSalonArray] = useState([])
+  
+    useEffect(() => {
+      fetch("http://localhost:5555/reviews")
+      .then ((r) => r.json())
+      .then(setSalonArray)
+    }, [])
 
     const salonCards = salons.map((salon) =>{
         return <SalonCard key={salon.id} salon={salon} />
       })
+      const adminSalonCards = salons.map((salon) =>{
+        return <AdminSalonCard key={salon.id} salon={salon} salonArray = {salonArray} setSalonArray={setSalonArray}/>
+      })  
+
+
     if (user.admin === "true" ){
         return(
         <>
         <h1>Admin Salons</h1>
-        {salonCards}
+        {adminSalonCards}
         <SalonForm handleSubmit={handleSubmit} formData={formData} handleChange = {handleChange}/>
         </>
         )
