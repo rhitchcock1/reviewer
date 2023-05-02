@@ -3,9 +3,15 @@ from models import db, User, Review, Salon
 
 with app.app_context():
 
+  u1=User(username= "bill", _password_hash = "1234", email = "bill@example.com" )
+  u2=User(username= "ted", _password_hash = "1234", email = "ted@example.com" )
+  u3=User(username= "sue", _password_hash = "1234", email = "sue@example.com" )
+  u4=User(username= "seth", _password_hash = "1234", email = "beth@example.com", admin = "true" )
+  
+
  
  
-  # users = [u1, u2, u3]
+  users = [u1, u2, u3, u4]
 
   s1=Salon(name = "Loreal", location = "Queens", image = "https://www.globalcosmeticsnews.com/wp-content/uploads/2020/04/Loreal_Salon.jpg")
   s2=Salon(name = "Aveda", location = "Brooklyn", image = "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/34/c9/38/getlstd-property-photo.jpg?w=1200&h=-1&s=1")
@@ -26,6 +32,6 @@ if __name__ == '__main__':
         Review.query.delete()
         print("Starting seed...")
         db.session.add_all(salons)
-        # db.session.add(u1)
+        db.session.add_all(users)
         db.session.add_all(reviews)
         db.session.commit()

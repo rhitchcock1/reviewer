@@ -1,4 +1,4 @@
-
+import { useNavigate } from "react-router-dom";
 import React, { useState, useContext } from "react";
 import { UserContext } from "../context/user";
 
@@ -6,7 +6,7 @@ function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const { user, setUser} = useContext(UserContext);
-  
+    const navigate = useNavigate()
     function handleSubmit(e) {
       
       e.preventDefault();
@@ -21,6 +21,7 @@ function Login() {
           r.json().then((user) => setUser(user));
         }
       });
+      navigate("/")
     }
   
     return (
@@ -33,7 +34,7 @@ function Login() {
             type="text"
             id="username"
             autoComplete="off"
-            value={username}
+            value={username.toLowerCase()}
             onChange={(e) => setUsername(e.target.value)}
           />
           <label htmlFor="password">Password</label>
@@ -47,7 +48,7 @@ function Login() {
           <button type="submit">Login</button>
         </form>
       </div>
-
+      
       </> 
     );
   }

@@ -1,8 +1,16 @@
 // import { UserContext } from "../context/user";
-import React from "react";
+import React, {useState, useEffect} from "react";
 
 
 export default function ReviewForm({handleChange, handleSubmit, formData}){
+    const [salon, setSalon] = useState([])
+  
+    useEffect(() => {
+      fetch("http://localhost:5555/salons")
+      .then ((r) => r.json())
+      .then(setSalon)
+    }, [])
+
     // const { user} = useContext(UserContext);
     return(
         <>
@@ -19,7 +27,14 @@ export default function ReviewForm({handleChange, handleSubmit, formData}){
             <input value ={formData.image} name = "image" onChange={handleChange} ></input>
             <label >image </label>
 
-            <input value ={formData.salon_id} name = "salon_id" onChange={handleChange} ></input>
+            {/* <input value ={formData.salon_id} name = "salon_id" onChange={handleChange} ></input> */}
+         
+           <select class="input-field" onChange={handleChange}>
+             <option class="input-field" id="Loreal" value = {formData.salon_id = [1]} >Loreal</option> 
+             <option class="input-field" id= "2" value = {formData.salon_id = 2}>Aveda</option> 
+             <option class="input-field" id="East" value = {formData.salon_id = 3} >Olaplex</option> 
+             {/* <option class="input-field" id="West" value = {formData.salon_id = 4}>Fantastic Sams</option>  */}
+           </select>
             <label >salon_id </label>
 
             <button type='submit'>Submit Review</button>

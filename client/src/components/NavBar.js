@@ -27,7 +27,7 @@ function NavBar() {
  
 
   return (
-    <header>
+    <header className="hheader">
     <div>
       <NavLink
         to="/"

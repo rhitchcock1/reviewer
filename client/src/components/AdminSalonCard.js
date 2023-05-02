@@ -16,8 +16,10 @@ export default function SalonCard({salon, onDeleteSalon}){
         <h1>{salon.name}</h1>
         <h2>{salon.location}</h2>
         <img src = {salon.image} alt={salon.name} />
+        <br />
         <button onClick = {handleDelete}>Delete Salon</button>
         </div>
+        <br />
         </>
     )
 }

@@ -26,8 +26,7 @@ from models import User,Salon, Review
     
 @app.route('/')
 def index():
-    return '<h1>Home</h1>'
-
+    return {}, 200
 class Users(Resource):
     def get(self):
         user_list = [u.to_dict() for u in User.query.all()]

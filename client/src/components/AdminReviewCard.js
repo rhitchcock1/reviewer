@@ -63,6 +63,7 @@ export default function AdminReviewCard({review, onUpdateReview, onDeleteReview 
         <button onClick={handleDisLikeClick}> Decrese Rating </button>
         <button onClick={handleDelete}>Delete Rrview</button>
         </div>
+        <br />
         </>
 
       )

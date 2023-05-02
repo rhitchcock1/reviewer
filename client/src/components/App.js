@@ -4,6 +4,7 @@ import Salons from "./Salons";
 import NavBar from "./NavBar";
 import SignUp from "./SignUp";
 import Login from "./Login";
+import './App.css';
 // import { useNavigate } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
 import React, {useState, useEffect} from "react";
@@ -40,14 +41,14 @@ function App() {
     <div >
          <UserContext.Provider value={{ user, setUser }}>
       <header>
-        <h1>Reviewer</h1>
+        <h1>NYC Salon Reviewer</h1>
         {user ? (
         <div>
           <p>Welcome, {user.username}!</p>
         </div>
          
       ) : (
-        <h4>!</h4>
+        <h4>Log in Or Sign Up to Review Salons</h4>
      
       )}
       </header>
