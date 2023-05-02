@@ -29,17 +29,18 @@ function NavBar() {
   return (
     <header className="hheader">
     <div>
-      <NavLink
-        to="/"
-       
-        style={linkStyles}
-      >
-        Home
-      </NavLink>
+   
       <div>
         {user ? (
           <div>
-          <button  style={linkStyles} onClick={handleLogoutClick}>Logout</button>
+           <NavLink
+            to="/"
+       
+        style={linkStyles}
+         >
+        Home
+        </NavLink>
+         
           <NavLink
           to="/reviews"
           
@@ -57,10 +58,18 @@ function NavBar() {
         >
           Salons
         </NavLink>
+        <button  style={linkStyles} onClick={handleLogoutClick}>Logout</button>
           </div>
         ) : (
           <>
-                 <NavLink
+        <NavLink
+        to="/"
+       
+        style={linkStyles}
+      >
+        Home
+      </NavLink>
+          <NavLink
         to="/signup"
         
         style={linkStyles}
