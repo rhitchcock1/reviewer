@@ -1,8 +1,15 @@
 import React, {useState} from "react";
 
-export default function AdminReviewCard({review, onUpdateReview, reviewArray, setReviewArray}){
+export default function AdminReviewCard({review, onUpdateReview, onDeleteReview }){
     const [likes, setLikes] = useState(review.rating)
 
+    function handleDelete() {
+      fetch(`http://localhost:5555/reviews/${review.id}`, {
+        method: "DELETE",
+      });
+      onDeleteReview(review);
+    }
+    
     function handleLikeClick() {
         const updateObj = {
           rating: likes + 1,
@@ -40,17 +47,8 @@ export default function AdminReviewCard({review, onUpdateReview, reviewArray, se
                 onUpdateReview(updatedReview);
               });
           }
-    function onDeleteReview(reviewToDelete){
-            const updatedReviews= reviewArray.filter((review) =>review.id !== reviewToDelete.id)
-            setReviewArray(updatedReviews)
-          }
-    function handleDelete() {
-            fetch(`http://localhost:5555/reviews/${review.id}`, {
-              method: "DELETE",
-            });
-            onDeleteReview(review);
-          }
-      
+
+
     return (
         <>
         <div>

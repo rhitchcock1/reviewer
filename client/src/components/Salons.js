@@ -7,7 +7,12 @@ import { UserContext } from "../context/user";
 function Salons(){
   const { user} = useContext(UserContext);
   const [salons, setSalons] = useState([])
+
   // const [salonsarray, setSalonsArray] = useState("")
+  function onDeleteSalon(salonToDelete){
+    const updatedSalons= salonArray.filter((salon) =>salon.id !== salonToDelete.id)
+    setSalons(updatedSalons)
+  }
 
   useEffect(() => {
     fetch("http://localhost:5555/salons")
@@ -52,7 +57,7 @@ function Salons(){
   const [salonArray, setSalonArray] = useState([])
   
     useEffect(() => {
-      fetch("http://localhost:5555/reviews")
+      fetch("http://localhost:5555/salons")
       .then ((r) => r.json())
       .then(setSalonArray)
     }, [])
@@ -61,7 +66,7 @@ function Salons(){
         return <SalonCard key={salon.id} salon={salon} />
       })
       const adminSalonCards = salons.map((salon) =>{
-        return <AdminSalonCard key={salon.id} salon={salon} salonArray = {salonArray} setSalonArray={setSalonArray}/>
+        return <AdminSalonCard key={salon.id} salon={salon} onDeleteSalon={onDeleteSalon}/>
       })  
 
 

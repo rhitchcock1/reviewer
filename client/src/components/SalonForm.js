@@ -13,7 +13,7 @@ export default function SalonForm({handleChange, handleSubmit, formData}){
             <input value ={formData.image} name = "image" onChange={handleChange} ></input>
             <label >image </label>
 
-            <button type='submit'>Submit Review</button>
+            <button type='submit'>Submit Salon</button>
 
         </form>
         </>

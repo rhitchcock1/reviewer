@@ -12,9 +12,14 @@ export default function Reviews(){
   const { user} = useContext(UserContext);
     const [reviews, setReviews] = useState([])
 
+    function onDeleteReview(reviewToDelete){
+      const updatedReviews= reviewArray.filter((review) =>review.id !== reviewToDelete.id)
+      setReviews(updatedReviews)
+    }
 
     const [reviewArray, setReviewArray] = useState([])
-  
+
+
     useEffect(() => {
       fetch("http://localhost:5555/reviews")
       .then ((r) => r.json())
@@ -70,12 +75,13 @@ export default function Reviews(){
           setReviews([...reviews, newReview])
   
       } 
+   
 
     const reviewCards = reviews.map((review) =>{
         return <ReviewCard key={review.id} review={review} onUpdateReview={onUpdateReview}/>
       })
     const adminCards = reviews.map((review) =>{
-      return <AdminReviewCard key={review.id} review={review} onUpdateReview={onUpdateReview} reviewArray= {reviewArray} setReviewArray={setReviewArray}/>
+      return <AdminReviewCard key={review.id} review={review} onUpdateReview={onUpdateReview} onDeleteReview= {onDeleteReview}/>
     })
     
       if (user.admin === "true" ){
@@ -83,7 +89,7 @@ export default function Reviews(){
           <>
         <h1>AdminCard</h1>
         {adminCards}
-        <ReviewForm formData = {formData} handleSubmit={handleSubmit} handleChange= {handleChange}/>
+        <ReviewForm formData = {formData} handleSubmit={handleSubmit} handleChange= {handleChange} />
         </>
          )
       }
