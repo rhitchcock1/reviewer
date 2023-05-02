@@ -14,8 +14,7 @@ export default function Home() {
      
           </div>
           )
-        // } else if (user.admin === true){
-        //   return <h1>Please Login or Sign Up</h1>;
+        
         }
         return <h1>Please Login or Sign Up</h1>;
       

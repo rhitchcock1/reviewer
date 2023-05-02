@@ -35,6 +35,7 @@ export default function Reviews(){
     const [formData, SetFormData] = useState({
         content:"",
         rating:"",
+        image: "",
         user_id: "",
         salon_id: "",
       
@@ -52,7 +53,8 @@ export default function Reviews(){
         const newReview = {
           content: formData.content,
           rating: formData.rating,
-          user_id: formData.user_id,
+          image: formData.image,
+          user_id: user.id,
           salon_id: formData.salon_id,
          
         }

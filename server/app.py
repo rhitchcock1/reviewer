@@ -116,7 +116,7 @@ class Reviews(Resource):
             new_review = Review (
             content = data['content'],
             rating = data["rating"],
-            helpful=data["helpful"],
+           image =data["image"],
             user_id = data["user_id"],
             salon_id = data["salon_id"],
             )
@@ -204,9 +204,10 @@ class Login(Resource):
 
         user = User.query.filter(User.username == username).first()
 
-        if user:
+        if user and password:
 
             session['user_id'] = user.id
+            session["password"] = user._password_hash
             return user.to_dict(), 200
 
         return {'error': '401 Unauthorized'}, 401

@@ -17,19 +17,20 @@ function App() {
   // const navigate = useNavigate()
  useEffect(() => {
   fetchUser()
- }, [])
+ }, )
   const fetchUser = () => {
     fetch(`http://localhost:5555/check_session`, {
-      mode: 'no-cors',
-      credentials: 'include',
-      method: 'GET',
-      headers: {
-        "Content-Type": "application/json",
-      },
+      // mode: 'no-cors',
+      // credentials: 'include',
+      // method: 'GET',
+      // headers: {
+      //   "Content-Type": "application/json",
+      // },
    })
     .then(res => {
       if (res.ok) {
-        res.json().then((user) => setUser(user));
+        // res.json().then((user) => setUser(user));
+        setUser(user)
       }
     });
 
@@ -50,14 +51,14 @@ function App() {
      
       )}
       </header>
-      <NavBar user={user} setUser={setUser}/>
+      <NavBar />
       <main>
       {user ? (
        
       <Routes>
 
         <Route path="/" >
-        <Route index element={<Home user={user} />}/>
+        <Route index element={<Home />}/>
         </Route>
        
         <Route path="/Reviews">
@@ -74,13 +75,13 @@ function App() {
       
         <Routes>
           <Route path="/signup">
-         <Route index element={<SignUp setUser={setUser}/>}/>
+         <Route index element={<SignUp />}/>
         </Route>
         <Route path="/Login">
-         <Route index element={<Login user ={user} setUser={setUser}/>}/>
+         <Route index element={<Login />}/>
         </Route>
         <Route path="/" >
-        <Route index element={<Home user={user} />}/>
+        <Route index element={<Home />}/>
         </Route>
 
         </Routes>
