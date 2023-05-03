@@ -86,18 +86,18 @@ export default function Reviews(){
     
       if (user.admin === "true" ){
         return(
-          <>
-        <h1>AdminCard</h1>
+          <div className="w-full bg-white py-16 px-4 columns">
+        <h1 className="text-4xl  text-[#8A1108] font-bold text-center uppercase">Admin Reviews</h1>
         {adminCards}
         <ReviewForm formData = {formData} handleSubmit={handleSubmit} handleChange= {handleChange} />
-        </>
+        </div>
          )
       }
       return(
-        <>
-        <h1>Reviews</h1>
+        <div className="w-full bg-white py-16 px-4 ">
+        <h1 className="text-4xl  text-[#8A1108] font-bold text-center uppercase">Reviews</h1>
         {reviewCards}
         <ReviewForm formData = {formData} handleSubmit={handleSubmit} handleChange= {handleChange}/>
-        </>
+        </div>
     )
 }

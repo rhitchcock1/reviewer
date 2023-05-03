@@ -39,7 +39,7 @@ function SignUp() {
     <div>
       <form onSubmit={handleSubmit}>
         <h1>Sign Up</h1>
-        <label htmlFor="username">Username</label>
+        <label className="text-xl text-white mx-4" htmlFor="username">Username</label>
         <input
           type="text"
           id="username"
@@ -47,15 +47,15 @@ function SignUp() {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-         <label htmlFor="email">Email</label>
+         <label className="text-xl text-white mx-4" htmlFor="email">Email</label>
         <input
-          type="text"
+          type="email"
           id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
          
         />
-        <label htmlFor="password">Password</label>
+        <label className="text-xl text-white mx-4" htmlFor="password">Password</label>
         <input
           type="password"
           id="password"
@@ -63,7 +63,7 @@ function SignUp() {
           onChange={(e) => setPasswordhash(e.target.value)}
           autoComplete="current-password"
         />
-        <label htmlFor="password">Password Confirmation</label>
+        <label className="text-xl text-white mx-4" htmlFor="password">Password Confirmation</label>
         <input
           type="password"
           id="password_confirmation"
@@ -71,7 +71,7 @@ function SignUp() {
           onChange={(e) => setPasswordConfirmation(e.target.value)}
           autoComplete="current-password"
         />
-        <button type="submit">Sign Up</button>
+        <button className=" bg-[#720E07] w-[200px] rounded-md font-medium my-2 mx-4 py-2 " type="submit">Sign Up</button>
    
       </form>
     </div>

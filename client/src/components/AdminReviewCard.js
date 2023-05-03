@@ -51,19 +51,21 @@ export default function AdminReviewCard({review, onUpdateReview, onDeleteReview 
 
 
     return (
-        <>
-        <div className = "reviewCard">
-        <h1>Rating: {likes}</h1>
-        <p>Review: {review.content}</p>
-        <img src = {review.image} alt = {review.review}/>
-        <h1>Salon:{review.salon.name}</h1>
-        <h4>{review.created_at}</h4>
-        <button onClick={handleLikeClick}> Increse Rating </button>
-        <button onClick={handleDisLikeClick}> Decrese Rating </button>
-        <button onClick={handleDelete}>Delete Rrview</button>
+      < div className = "max-w-[900px] mx-auto py-10 px-20  ">
+      <div className="w-full pb-3 px-2 py-2 shadow-2xl rounded-lg hover:scale-110 duration-300">
+       
+        <h1 className="text-2xl font-bold text-center py-2">Salon: {review.salon.name}</h1>
+        <h1 className="text-xl font-bold px-1">Rating: {likes}</h1>
+        <p className=" text-[#8A1108] font-bold text-xl px-1 pb-2">Review: {review.content}</p>
+        <img id="rImg" className=" mx-auto "  src = {review.image} alt = {review.review}/>
+        
+        <h4 className="text-xl font-bold px-1 pt-1">Review Date/Time: {review.created_at}</h4>
+        <button className="bg-[#8A1108] w-[200px] rounded-md font-medium my-2 mx-2 py-2 " onClick={handleLikeClick}> Increse Rating </button>
+        <button className="bg-[#8A1108] w-[200px] rounded-md font-medium my-2 mx-8 py-2 " onClick={handleDisLikeClick}> Decrese Rating </button>
+        <button className=" bg-[#8A1108] w-[200px] rounded-md font-medium my-2 mx-5 py-2 " onClick={handleDelete}>Delete Rrview</button>
         </div>
-        <br />
-        </>
+        </div>
+      
 
       )
 
