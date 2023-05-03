@@ -2,7 +2,7 @@ import React, {useContext, useState} from "react";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/user";
-import {GiHairStrands} from 'react-icons/gi'
+
 import {AiOutlineClose, AiOutlineMenu} from 'react-icons/ai'
 
 
@@ -38,9 +38,9 @@ function NavBar() {
   return (
 
     <div className=" flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white">
-       <h1 className='w-full text-3xl font-bold text-[#720E07]'>BUTCHERED</h1>
+       <h1 className='w-full text-3xl font-bold text-[#720E07]'>BUTCHERED✂️</h1>
        <div className="flex justify-between" > 
-       <GiHairStrands className ="flex" size={40}  color="#720E07"/>
+    
        </div>
       <div>
         {user ? (
