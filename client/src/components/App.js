@@ -4,11 +4,13 @@ import Salons from "./Salons";
 import NavBar from "./NavBar";
 import SignUp from "./SignUp";
 import Login from "./Login";
-import './App.css';
+
+import "../index.css"
 // import { useNavigate } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
 import React, {useState, useEffect} from "react";
 import { UserContext} from "../context/user";
+import {GiHairStrands} from 'react-icons/gi'
 
 
 
@@ -34,11 +36,14 @@ function App() {
 
   
   return (
-    <div >
-         <UserContext.Provider value={{ user, setUser }}>
-      <header>
-        <h1>NYC Salon Reviewer</h1>
-        {user ? (
+    // <div className=" flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white">
+    //      <UserContext.Provider value={{ user, setUser }}>
+    //   <header>
+    //     <h1 className='w-full text-3xl font-bold text-[#720E07]'>BUTCHERED</h1>
+    //     <p><GiHairStrands color="#720E07"/></p>
+        <div>
+             <UserContext.Provider value={{ user, setUser }}>
+    {user ? (
         <div>
           <p>Welcome, {user.username}!</p>
         </div>
@@ -47,9 +52,10 @@ function App() {
         <h4>Log in Or Sign Up to Review Salons</h4>
      
       )}
-      </header>
+    
+     
       <NavBar />
-      <main>
+     
       {user ? (
        
       <Routes>
@@ -67,23 +73,30 @@ function App() {
         </Route>
       
       </Routes>
+     
       
       ) : (
-      
+     
         <Routes>
+        
           <Route path="/signup">
          <Route index element={<SignUp />}/>
         </Route>
+        
         <Route path="/Login">
          <Route index element={<Login />}/>
         </Route>
+      
         <Route path="/" >
         <Route index element={<Home />}/>
         </Route>
-
+        
         </Routes>
+       
        )}
-      </main>
+
+    
+      
       </UserContext.Provider>
     </div>
   

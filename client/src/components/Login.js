@@ -31,10 +31,10 @@ function Login() {
   
     return (
        <>
-      <div>
+      <div className="">
         <form onSubmit={handleSubmit}>
           <h1>Login</h1>
-          <label htmlFor="username">Username</label>
+          <label className="text-xl text-white mx-4"  htmlFor="username">Username</label>
           <input
             type="text"
             id="username"
@@ -42,15 +42,16 @@ function Login() {
             value={username.toLowerCase()}
             onChange={(e) => setUsername(e.target.value)}
           />
-          <label htmlFor="password">Password</label>
+          <label  className="text-xl text-white mx-4" htmlFor="password">Password</label>
           <input
+         
             type="password"
             id="password"
             autoComplete="current-password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button type="submit">Login</button>
+          <button className=" bg-[#720E07] w-[200px] rounded-md font-medium my-2 mx-6 py-2 " type="submit">Login</button>
         </form>
       </div>
       

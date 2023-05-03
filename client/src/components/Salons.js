@@ -74,18 +74,18 @@ function Salons(){
 
     if (user.admin === "true" ){
         return(
-        <>
-        <h1>Admin Salons</h1>
+          <div className="w-full bg-white py-16 px-4">
+        <h1 className="text-4xl  text-[#8A1108] font-bold text-center uppercase">Admin Salon Directory</h1>
         {adminSalonCards}
         <SalonForm handleSubmit={handleSubmit} formData={formData} handleChange = {handleChange}/>
-        </>
+        </div>
         )
     } return (
-      <>
-      <h1>Salons</h1>
+      <div className="w-full bg-white py-16 px-4">
+      <h1 className="text-4xl  text-[#8A1108] font-bold text-center uppercase">Salon Directory</h1>
       {salonCards}
       <SalonForm handleSubmit={handleSubmit} formData={formData} handleChange = {handleChange}/>
-      </>
+      </div>
 
     )
 }
