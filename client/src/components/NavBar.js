@@ -69,14 +69,6 @@ function NavBar() {
       >
         Home
       </NavLink>
-          <NavLink
-        to="/signup"
-        
-        style={linkStyles}
-     
-      >
-        SignUp
-      </NavLink>
       <NavLink
         to="/login"
        
@@ -85,6 +77,15 @@ function NavBar() {
       >
         Login
       </NavLink>
+          <NavLink
+        to="/signup"
+        
+        style={linkStyles}
+     
+      >
+        SignUp
+      </NavLink>
+     
   
           </>
         )}
