@@ -1,13 +1,19 @@
 import React from "react";
 import Typed from 'react-typed';
 import { useNavigate } from "react-router-dom";
+import homepage from "./images/homepage.png";
 
 
 const Hero = () => {
     const navigate = useNavigate()
     return(
-        <div className="text-white">
-            <div className = "max-w-[800px] mt-[-75px] w-full h-screen mx-auto text-center flex flex-col justify-center ">
+        <div className="text-white mx-auto">
+           
+            <div className = "max-w-[800px] w-full  mx-auto text-center flex flex-col justify-center ">
+                {/* <div className="absolute w-full h-32 bg-gradient-to-t from-black to-transparent" /> */}
+            
+                 <img id="hImg" src={homepage} alt="bad-haircut" />
+                
                 <p className="font-bold p-2 text-2xl">NEW YORK CITY'S HAIRSALON REVIEW WEBSITE</p>
                 <h1 className=" text-[#720E07] md:text-7xl sm:text-4xl font-bold md:py-6">BUTCHERED✂️</h1>
                 {/* <p className ="" >
@@ -25,10 +31,13 @@ const Hero = () => {
                     />
                 </div>
                 <p className="font-bold p-2 pt-10 text-2xl">Login In or Sign Up to let other New Yorkers know! </p>
+                <div>
                 <button onClick={() => navigate("/login")} className="bg-[#720E07] w-[200px] rounded-md font-medium my-6 mx-auto py-2 ">LOGIN</button>
-                <button onClick={() => navigate("/signup")} className=" bg-[#720E07] w-[200px] rounded-md font-medium my-2 mx-auto py-2 ">SIGN UP</button>
-            </div>
-        </div>
+                <button onClick={() => navigate("/signup")} className=" bg-[#720E07] w-[200px] rounded-md font-medium my-2 mx-auto py-2 ml-4">SIGN UP</button>
+                </div>
+                </div>
+          
+         </div>
     )
 
 

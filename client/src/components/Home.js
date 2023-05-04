@@ -18,8 +18,8 @@ export default function Home() {
             <div className="w-full pb-3 px-2 py-2 shadow-2xl rounded-lg hover:scale-110 duration-300">
          
        
-             <div>{user.reviews?.map((review) => (
-              <div>
+             <div>{user.reviews?.map((review) => ( 
+              <div key={review.id} >
                  <h2>Salon:{review.salon.name}</h2>
               <h2>Review:{review.content}</h2>
               <h2>Rating:{review.rating}</h2>

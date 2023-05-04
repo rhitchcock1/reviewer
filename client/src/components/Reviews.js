@@ -86,18 +86,22 @@ export default function Reviews(){
     
       if (user.admin === "true" ){
         return(
-          <div className="w-full bg-white py-16 px-4 columns">
+          <div className="w-full bg-white py-16 px-4 ">
         <h1 className="text-4xl  text-[#8A1108] font-bold text-center uppercase">Admin Reviews</h1>
+        <div className="grid lg:grid-cols-2">
         {adminCards}
         <ReviewForm formData = {formData} handleSubmit={handleSubmit} handleChange= {handleChange} />
+        </div>
         </div>
          )
       }
       return(
-        <div className="w-full bg-white py-16 px-4 ">
+        <div className="w-full bg-white py-16 px-4">
         <h1 className="text-4xl  text-[#8A1108] font-bold text-center uppercase">Reviews</h1>
+        <div className="grid lg:grid-cols-2">
         {reviewCards}
         <ReviewForm formData = {formData} handleSubmit={handleSubmit} handleChange= {handleChange}/>
+        </div>
         </div>
     )
 }

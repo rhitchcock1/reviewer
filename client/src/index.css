@@ -13,3 +13,14 @@ body {
   width: 500px;
 
 }
+
+#hImg {
+  height: 350px;
+}
+
+@layer components {
+  .inputClass {
+    @apply text-center w-full h-12 font-bold;
+
+  }
+}

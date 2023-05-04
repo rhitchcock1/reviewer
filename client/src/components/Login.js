@@ -30,32 +30,39 @@ function Login() {
     }
   
     return (
-       <>
-      <div className="">
-        <form onSubmit={handleSubmit}>
-          <h1>Login</h1>
-          <label className="text-xl text-white mx-4"  htmlFor="username">Username</label>
+       <div className="flex flex-col justify-center h-screen items-center">
+      <div className="w-[310px] h-[410px] flex flex-col justify-between items-center rounded-lg border-2 text-white  ">
+        <form 
+        className="h-52 w-full p-4 space-y-4"
+        onSubmit={handleSubmit}
+        >
+          <h1 className=" text-[#720E07] text-center md:text-5xl sm:text-2xl font-bold uppercase">Login</h1>
+          {/* <label className="text-xl text-white mx-4"  htmlFor="username">Username</label> */}
           <input
+          className="inputClass"
+          placeholder="Username"
             type="text"
             id="username"
             autoComplete="off"
             value={username.toLowerCase()}
             onChange={(e) => setUsername(e.target.value)}
           />
-          <label  className="text-xl text-white mx-4" htmlFor="password">Password</label>
+          {/* <label  className="text-xl text-white mx-4" htmlFor="password">Password</label> */}
           <input
-         
+          className="inputClass"
+          placeholder="Password"
             type="password"
             id="password"
             autoComplete="current-password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className=" bg-[#720E07] w-[200px] rounded-md font-medium my-2 mx-6 py-2 " type="submit">Login</button>
         </form>
+        <button className=" bg-[#720E07] w-[200px] h-10 rounded-md font-medium m-auto uppercase" type="submit">Login</button>
+        <h3 className="cursor-pointer text-decoration-line: underline pb-3" onClick={()=> navigate("/signup")}> Don't have an account, Sign Up here !</h3>
       </div>
       
-      </> 
+      </div> 
     );
   }
   
