@@ -81,9 +81,9 @@ function SignUp() {
           onChange={(e) => setPasswordConfirmation(e.target.value)}
           autoComplete="current-password"
         />
-   
+        <button className=" bg-[#720E07] w-[200px] h-10 mx-11 mt-14 rounded-md font-medium  uppercase" type="submit">Sign Up</button>
       </form>
-      <button className=" bg-[#720E07] w-[200px] h-10 mx-14 mt-14 rounded-md font-medium  uppercase" type="submit">Sign Up</button>
+     
       <h2 className="cursor-pointer text-decoration-line: underline mx-4 pb-3" onClick={()=> navigate("/login")}>Already have an account, log in here!</h2>
     </div>
     </div>

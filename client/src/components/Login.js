@@ -30,8 +30,8 @@ function Login() {
     }
   
     return (
-       <div className="flex flex-col justify-center h-screen items-center">
-      <div className="w-[310px] h-[410px] flex flex-col justify-between items-center rounded-lg border-2 text-white  ">
+       <div className="flex flex-col justify-center h-screen items-center mt-3">
+      <div className="w-[310px] h-[350px] flex flex-col justify-between  rounded-lg border-2 text-white  ">
         <form 
         className="h-52 w-full p-4 space-y-4"
         onSubmit={handleSubmit}
@@ -57,9 +57,10 @@ function Login() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+          <button className=" bg-[#720E07] w-[200px] h-10 rounded-md ml-9 mt-15 font-medium m-auto uppercase" type="submit">Login</button>
         </form>
-        <button className=" bg-[#720E07] w-[200px] h-10 rounded-md font-medium m-auto uppercase" type="submit">Login</button>
-        <h3 className="cursor-pointer text-decoration-line: underline pb-3" onClick={()=> navigate("/signup")}> Don't have an account, Sign Up here !</h3>
+      
+        <h3 className="cursor-pointer text-decoration-line: underline ml-3 pb-3" onClick={()=> navigate("/signup")}> Don't have an account, Sign Up here !</h3>
       </div>
       
       </div> 
