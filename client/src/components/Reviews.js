@@ -11,6 +11,7 @@ export default function Reviews(){
 
   const { user} = useContext(UserContext);
     const [reviews, setReviews] = useState([])
+    const [search, setSearch] = useState("")
 
     function onDeleteReview(reviewToDelete){
       const updatedReviews= reviewArray.filter((review) =>review.id !== reviewToDelete.id)
@@ -75,9 +76,14 @@ export default function Reviews(){
           setReviews([...reviews, newReview])
   
       } 
-   
+    const searchReviews = reviews.filter((review) => 
+    review.content.toLowerCase().includes(search.toLowerCase()))
+    
+    function handleSChange(e){
+      setSearch(e.target.value)
+    }
 
-    const reviewCards = reviews.map((review) =>{
+    const reviewCards = searchReviews.map((review) =>{
         return <ReviewCard key={review.id} review={review} onUpdateReview={onUpdateReview}/>
       })
     const adminCards = reviews.map((review) =>{
@@ -88,6 +94,8 @@ export default function Reviews(){
         return(
           <div className="w-full bg-white py-16 px-4 ">
         <h1 className="text-4xl  text-[#8A1108] font-bold text-center uppercase">Admin Reviews</h1>
+        <input type ="text" value = {search}
+        onChange = {handleSChange} />
         <div className="grid lg:grid-cols-2">
         {adminCards}
         <ReviewForm formData = {formData} handleSubmit={handleSubmit} handleChange= {handleChange} />
@@ -98,6 +106,16 @@ export default function Reviews(){
       return(
         <div className="w-full bg-white py-16 px-4">
         <h1 className="text-4xl  text-[#8A1108] font-bold text-center uppercase">Reviews</h1>
+       <div
+       className="ml-8 mr-8 mt-4 flex flex-col justify-between bg-black  rounded-lg border-2 "
+       >
+        <input 
+        className="text-center w-full h-12 font-bold text-[#720E07] border-none"
+        type="text" 
+        placeholder="search reviews"
+        value = {search}
+        onChange = {handleSChange}></input>
+       </div>
         <div className="grid lg:grid-cols-2">
         {reviewCards}
         <ReviewForm formData = {formData} handleSubmit={handleSubmit} handleChange= {handleChange}/>
