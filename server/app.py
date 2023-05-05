@@ -99,7 +99,8 @@ class Reviews(Resource):
         try:
             new_review = Review (
             content = data['content'],
-            rating = data["rating"],
+            helpful = data["helpful"],
+            funny = data["funny"],
            image =data["image"],
             user_id = data["user_id"],
             salon_id = data["salon_id"],

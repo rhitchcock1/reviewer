@@ -1,8 +1,8 @@
-"""create tables take 2
+"""redo of review
 
-Revision ID: e825f0fcbc58
+Revision ID: 70d7807ef3b4
 Revises: 
-Create Date: 2023-04-26 11:03:49.908550
+Create Date: 2023-05-05 11:15:12.770390
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'e825f0fcbc58'
+revision = '70d7807ef3b4'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -22,12 +22,15 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=False),
     sa.Column('location', sa.String(), nullable=True),
+    sa.Column('contact', sa.String(), nullable=True),
+    sa.Column('image', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('users',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(), nullable=True),
     sa.Column('username', sa.String(), nullable=True),
+    sa.Column('email', sa.String(), nullable=True),
+    sa.Column('admin', sa.String(), nullable=True),
     sa.Column('_password_hash', sa.String(), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('username')
@@ -35,7 +38,10 @@ def upgrade():
     op.create_table('reviews',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('content', sa.String(), nullable=True),
-    sa.Column('rating', sa.Integer(), nullable=False),
+    sa.Column('helpful', sa.Integer(), nullable=False),
+    sa.Column('funny', sa.Integer(), nullable=False),
+    sa.Column('image', sa.String(), nullable=True),
+    sa.Column('created_at', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('salon_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['salon_id'], ['salons.id'], name=op.f('fk_reviews_salon_id_salons')),

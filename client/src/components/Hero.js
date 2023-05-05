@@ -21,11 +21,11 @@ const Hero = () => {
                 </p> */}
                
                 <div className="flex justify-center items-center">
-                    <p className="md:text-4xl sm:text-4xl text-xl font-bold">Review salons that were </p>
+                    <p className="md:text-4xl sm:text-4xl text-xl font-bold">Tell us about salons that were </p>
                     <Typed 
                     className="text-[#720E07] md:text-4xl sm:text-4xl text-xl font-bold pl-2"
-                    strings={["AMAZING!", "TERRIBLE!", "OVERPRICED!", "BEAUTIFUL!", "SO CHEAP!"]} 
-                    typeSpeed={120} 
+                    strings={["A NIGHTMARE!", "TERRIBLE!", "OVERPRICED!", "JUST AWFUL!", "SO CHEAP!"]} 
+                    typeSpeed={160} 
                     backSpeed={140} 
                     loop
                     />
