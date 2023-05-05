@@ -1,25 +1,27 @@
-// import { UserContext } from "../context/user";
-import React, {useState, useEffect} from "react";
+import { UserContext } from "../context/user";
+import React, {useContext} from "react";
 
 
 export default function ReviewForm({handleChange, handleSubmit, formData}){
-    const [salon, setSalon] = useState([])
+    // const [salon, setSalon] = useState([])
   
-    useEffect(() => {
-      fetch("http://localhost:5555/salons")
-      .then ((r) => r.json())
-      .then(setSalon)
-    }, [])
+    // useEffect(() => {
+    //   fetch("http://localhost:5555/salons")
+    //   .then ((r) => r.json())
+    //   .then(setSalon)
+    // }, [])
 
-    // const { user} = useContext(UserContext);
+    const { user} = useContext(UserContext);
+
     return(
         <div className="flex flex-col justify-evenly h-screen items-center mt-3">
         <div className="w-[400px] h-[400px] flex flex-col justify-between bg-black  rounded-lg border-2 text-white  ">
-        
+ 
         <form 
         className="h-52 w-full p-4 space-y-4"
         onSubmit={ handleSubmit }>
         <h1 className=" text-[#720E07] text-center md:text-5xl sm:text-2xl font-bold uppercase">ADD Review</h1>
+           <h2 className=" text-[#720E07] text-center text-xl" >Who butchered you {user.username}?</h2>
             <input 
             className="inputClass"
             placeholder="Write Review Here!"
@@ -27,19 +29,6 @@ export default function ReviewForm({handleChange, handleSubmit, formData}){
             name = "content" 
             onChange={handleChange} ></input>
           
-
-            {/* <input 
-            className="inputClass"
-            placeholder="H"
-            value ={formData.helpful} 
-            name = "helpful" 
-            onChange={handleChange} ></input>
-            <input 
-            className="inputClass"
-            placeholder="F"
-            value ={formData.funny} 
-            name = "funny" 
-            onChange={handleChange} ></input> */}
        
 
             <input 

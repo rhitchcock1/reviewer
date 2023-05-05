@@ -14,9 +14,10 @@ body {
 
 }
 
-#hImg {
-  height: 350px;
-}
+/* #hImg {
+  
+
+} */
 
 @layer components {
   .inputClass {

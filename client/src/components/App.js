@@ -10,7 +10,7 @@ import "../index.css"
 import { Route, Routes } from "react-router-dom";
 import React, {useState, useEffect} from "react";
 import { UserContext} from "../context/user";
-import {GiHairStrands} from 'react-icons/gi'
+
 
 
 

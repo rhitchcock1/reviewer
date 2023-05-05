@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "react-typed": "^1.2.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.2"
   }
 }
