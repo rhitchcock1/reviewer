@@ -25,7 +25,7 @@ export default function Home() {
               <h2 className="text-xl font-bold px-1">Rating:{review.rating}</h2>
             
              <img id="rImg" className=" mx-auto "  src ={review.image} alt = {review.content} />
-              <h3 className="text-xl font-bold px-1 pt-1">{review.created_at}</h3>
+              <h3 className="text-xl font-bold px-1 pt-1 border-b-2 border-black">{review.created_at}</h3>
               </div>
               
                ))}</div>
