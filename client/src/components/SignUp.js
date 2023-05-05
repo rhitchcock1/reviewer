@@ -32,6 +32,9 @@ function SignUp() {
     }).then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
+        navigate("/")
+       }else{
+        alert("Username alsready taken")
       }
     });
   }

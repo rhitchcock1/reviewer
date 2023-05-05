@@ -159,12 +159,12 @@ class Signup(Resource):
         if username and password and email:
             
             new_user = User(username=username, email=email)
-            new_user._password_hash = password
+            new_user.password_hash = password
             db.session.add(new_user)
             db.session.commit()
 
             session['user_id'] = new_user.id
-            session["password"] = new_user._password_hash
+            # session["password"] = new_user._password_hash
             
             return new_user.to_dict(), 201
 
@@ -173,12 +173,12 @@ class Signup(Resource):
 class CheckSession(Resource):
 
     def get(self):
-        user= User.query.filter_by(id=session.get("user_id")).first()
-        if user:
-            return make_response(user.to_dict(), 200)
+        if session.get('user_id'):
+            user= User.query.filter(User.id == session['user_id']).first()
+            return make_response(  user.to_dict(), 200 )
         return {}, 204
     
-api.add_resource(CheckSession, '/check_session', endpoint='check_session')
+
 
 class Login(Resource):
 
@@ -208,7 +208,7 @@ class Logout(Resource):
 
 api.add_resource(ClearSession, '/clear', endpoint='clear')
 api.add_resource(Signup, '/signup', endpoint='signup')
-
+api.add_resource(CheckSession, '/check_session', endpoint='check_session')
 api.add_resource(Login, '/login', endpoint='login')
 api.add_resource(Logout, '/logout', endpoint='logout')
 
