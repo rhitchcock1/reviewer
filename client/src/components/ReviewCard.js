@@ -7,7 +7,7 @@ export default function ReviewCards({review, onUpdateReview}){
 
     function handleHLikeClick() {
         const updateObj = {
-          rating: help + 1,
+          helpful: help + 1,
         };
     
         fetch(`http://localhost:5555/reviews/${review.id}`, {
@@ -25,7 +25,7 @@ export default function ReviewCards({review, onUpdateReview}){
         }
     function handleFLikeClick() {
             const updateObj = {
-              rating: funny + 1,
+              funny: funny + 1,
             };
         
             fetch(`http://localhost:5555/reviews/${review.id}`, {

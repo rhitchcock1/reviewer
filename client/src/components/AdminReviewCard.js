@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 
 export default function AdminReviewCard({review, onUpdateReview, onDeleteReview }){
-  const [help, setHelp] = useState(review.helpful)
-  const [funny, setFunny] = useState(review.funny)
+  const [ahelp, setAHelp] = useState(review.helpful)
+  const [afunny, setAFunny] = useState(review.funny)
 
     function handleDelete() {
       fetch(`http://localhost:5555/reviews/${review.id}`, {
@@ -14,7 +14,7 @@ export default function AdminReviewCard({review, onUpdateReview, onDeleteReview 
     
     function handleHLikeClick() {
       const updateObj = {
-        rating: help + 1,
+        helpful: ahelp + 1,
       };
   
       fetch(`http://localhost:5555/reviews/${review.id}`, {
@@ -26,13 +26,13 @@ export default function AdminReviewCard({review, onUpdateReview, onDeleteReview 
       })
         .then((r) => r.json())
         .then((updatedReview) => {
-          setHelp(updatedReview.helpful);
+          setAHelp(updatedReview.helpful);
           onUpdateReview(updatedReview);
         });
       }
   function handleFLikeClick() {
           const updateObj = {
-            rating: funny + 1,
+            funny: afunny + 1,
           };
       
           fetch(`http://localhost:5555/reviews/${review.id}`, {
@@ -44,7 +44,7 @@ export default function AdminReviewCard({review, onUpdateReview, onDeleteReview 
           })
             .then((r) => r.json())
             .then((updatedReview) => {
-              setFunny(updatedReview.funny);
+              setAFunny(updatedReview.funny);
               onUpdateReview(updatedReview);
             });
           }
@@ -62,8 +62,8 @@ export default function AdminReviewCard({review, onUpdateReview, onDeleteReview 
         <img id="rImg" className=" mx-auto "  src = {review.image} alt = {review.review}/>
         
         <h4 className="text-xl font-bold px-1 pt-1">Review Date/Time: {review.created_at}</h4>
-        <button className="bg-[#8A1108] w-[200px] rounded-md font-medium my-2 mx-2 py-2 " onClick={handleHLikeClick}> Helpful: {help} </button>
-        <button className="bg-[#8A1108] w-[200px] rounded-md font-medium my-2 mx-2 py-2 " onClick={handleFLikeClick}> Funny: {funny} </button>
+        <button className="bg-[#8A1108] w-[200px] rounded-md font-medium my-2 mx-2 py-2 " onClick={handleHLikeClick}> Helpful: {ahelp} </button>
+        <button className="bg-[#8A1108] w-[200px] rounded-md font-medium my-2 mx-2 py-2 " onClick={handleFLikeClick}> Funny: {afunny} </button>
         <button className=" bg-[#8A1108] w-[200px] rounded-md font-medium my-2 mx-5 py-2 " onClick={handleDelete}>Delete Rrview</button>
         </div>
         </div>
