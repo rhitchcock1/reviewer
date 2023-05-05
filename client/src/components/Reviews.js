@@ -59,8 +59,8 @@ export default function Reviews(){
         e.preventDefault()
         const newReview = {
           content: formData.content,
-          helpful: formData.rating,
-          funny: formData.rating,
+          // helpful: formData.helpful,
+          // funny: 0,
           image: formData.image,
           user_id: user.id,
           salon_id: formData.salon_id,
@@ -78,14 +78,14 @@ export default function Reviews(){
           setReviews([...reviews, newReview])
   
       } 
-    const searchReviews = reviews.filter((review) => 
-    review.content.toLowerCase().includes(search.toLowerCase()))
+    // const searchReviews = reviews.filter((review) => 
+    // review.content.toLowerCase().includes(search.toLowerCase()))
     
     function handleSChange(e){
       setSearch(e.target.value)
     }
 
-    const reviewCards = searchReviews.map((review) =>{
+    const reviewCards = reviews.map((review) =>{
         return <ReviewCard key={review.id} review={review} onUpdateReview={onUpdateReview}/>
       })
     const adminCards = reviews.map((review) =>{

@@ -67,8 +67,8 @@ class Review(db.Model, SerializerMixin):
     serialize_rules = ("-reviews",)
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String, )
-    helpful = db.Column(db.Integer, nullable = False)
-    funny = db.Column(db.Integer, nullable = False)
+    helpful = db.Column(db.Integer, default = 0)
+    funny = db.Column(db.Integer, default = 0)
     image = db.Column(db.String)
 
     created_at = db.Column(db.DateTime, server_default= db.func.now())

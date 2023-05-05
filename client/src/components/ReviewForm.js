@@ -28,12 +28,18 @@ export default function ReviewForm({handleChange, handleSubmit, formData}){
             onChange={handleChange} ></input>
           
 
+            {/* <input 
+            className="inputClass"
+            placeholder="H"
+            value ={formData.helpful} 
+            name = "helpful" 
+            onChange={handleChange} ></input>
             <input 
             className="inputClass"
-            placeholder="Rating"
-            value ={formData.rating} 
-            name = "rating" 
-            onChange={handleChange} ></input>
+            placeholder="F"
+            value ={formData.funny} 
+            name = "funny" 
+            onChange={handleChange} ></input> */}
        
 
             <input 
