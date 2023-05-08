@@ -3,6 +3,7 @@ import ReviewForm from "./ReviewForm"
 import ReviewCard from "./ReviewCard"
 import AdminReviewCard from "./AdminReviewCard"
 import { UserContext } from "../context/user";
+import {BsSearch} from 'react-icons/bs'
 
 
 
@@ -97,14 +98,20 @@ export default function Reviews(){
           <div className="w-full bg-white py-16 px-4 ">
         <h1 className="text-4xl  text-[#8A1108] font-bold text-center uppercase">Admin Reviews</h1>
         <div
-       className="ml-8 mr-8 mt-4 flex flex-col justify-between bg-black  rounded-lg border-2 "
+       className="relative w-max mx-auto"
        >
         <input 
-        className="text-center w-full h-12 font-bold text-[#720E07] border-none"
+        className=" relative peer z-10 bg-transparent rounded-full cursor-pointer w-12 h-12 font-bold text-[#720E07] 
+        pl-12
+        focus:w-full focus:border-gray-300 focus:cursor-text focus:pl-16  focus:pr-4
+        "
         type="text" 
         placeholder="search reviews"
         value = {search}
         onChange = {handleSChange}></input>
+        <svg className="absolute inset-y-0 my-auto h-8 w-12 px-3.5 border-r stroke-gray-500 border-transparent peer-focus:border-gray-400 peer-focus:stroke-gray-300">
+        <BsSearch />
+        </svg>
        </div>
         <div className="grid lg:grid-cols-2">
         {adminCards}
@@ -116,15 +123,21 @@ export default function Reviews(){
       return(
         <div className="w-full bg-white py-16 px-4">
         <h1 className="text-4xl  text-[#8A1108] font-bold text-center uppercase">Reviews</h1>
-       <div
-       className="ml-8 mr-8 mt-4 flex flex-col justify-between bg-black  rounded-lg border-2 "
+        <div
+       className="relative w-max mx-auto"
        >
         <input 
-        className="text-center w-full h-12 font-bold text-[#720E07] border-none"
+        className=" relative peer z-10 bg-transparent rounded-full cursor-pointer w-12 h-12 font-bold text-[#720E07] 
+        pl-12
+        focus:w-full focus:border-gray-300 focus:cursor-text focus:pl-16  focus:pr-4 
+        "
         type="text" 
         placeholder="search reviews"
         value = {search}
         onChange = {handleSChange}></input>
+        <svg className="absolute inset-y-0 my-auto h-8 w-12 px-3.5 border-r stroke-gray-500 border-transparent peer-focus:border-gray-400 peer-focus:stroke-gray-300">
+        <BsSearch />
+        </svg>
        </div>
         <div className="grid lg:grid-cols-2">
         {reviewCards}

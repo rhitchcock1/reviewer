@@ -21,7 +21,7 @@ body {
 
 @layer components {
   .inputClass {
-    @apply text-center w-full h-12 font-bold text-[#720E07];
+    @apply text-center w-full h-12 font-bold text-[#720E07] border-gray-300 outline-none ;
 
   }
 }
