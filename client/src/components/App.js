@@ -17,31 +17,32 @@ import { UserContext} from "../context/user";
 
 function App() {
   const [user, setUser] = useState();
-  
+
  useEffect(() => {
   fetchUser()
  }, )
   const fetchUser = () => {
+  
     fetch("http://localhost:5555/check_session", {
-
+   
    })
     .then(res => {
       if (res.ok) {
-        res.json().then((user) => setUser(user));
-        // setUser(user);
-        console.log("did it work")
+        // res.json().then((user) => setUser(user));
+        setUser(user);
+        console.log("CHOP, CHOP, CHOP!")
+      
+        // res.json().then(user => {
+        //   setUser(user);
+        // })
       }
-    } );
-
+    }, [] );
+    
   }
 
   
   return (
-    // <div className=" flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white">
-    //      <UserContext.Provider value={{ user, setUser }}>
-    //   <header>
-    //     <h1 className='w-full text-3xl font-bold text-[#720E07]'>BUTCHERED</h1>
-    //     <p><GiHairStrands color="#720E07"/></p>
+ 
         <div>
              <UserContext.Provider value={{ user, setUser }}>
     {user ? (

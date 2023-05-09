@@ -173,8 +173,10 @@ class Signup(Resource):
 class CheckSession(Resource):
 
     def get(self):
+
         if session.get('user_id'):
             user= User.query.filter(User.id == session['user_id']).first()
+            # session['user_id'] = user.id
             return make_response(  user.to_dict(), 200 )
         return {}, 204
     
